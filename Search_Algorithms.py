@@ -223,9 +223,9 @@ def astar_search(graph, start, goal):
             path_to_neighbour = path_till_now.copy()
             path_to_neighbour.append(neighbour)
 
-            # extra_cost = graph.get_edge_weight(current_node, neighbour)
-            extra_cost = 1
-            neighbour_cost = extra_cost + path_cost_till_now + get_manhattan_heuristic(neighbour, goal)
+            # get_geographical_heutristic_cost = graph.get_edge_weight(current_node, neighbour)
+            
+            neighbour_cost =  get_manhattan_heuristic(neighbour, goal)
             new_element = (neighbour_cost, path_to_neighbour)
 
             is_there, indexx, neighbour_old_cost, _ = get_frontier_params_new(neighbour, frontier)
@@ -297,26 +297,26 @@ def get_manhattan_heuristic(node, goal):
 if __name__ == '__main__':
     graph_neighbours = generate_graph()
 
-    print("============ UCS Search ================")
-    path_ucs, explored_ucs = uniform_cost_search(graph_neighbours, '0', '4')
-    print("Path UCS:", path_ucs)
+    #print("============ UCS Search ================")
+    #path_ucs, explored_ucs = uniform_cost_search(graph_neighbours, '0', '4')
+    #print("Path UCS:", path_ucs)
     # print("Explored Nodes UCS: ", explored_ucs)
-    print(len(explored_ucs))
-    print()
+    #print(len(explored_ucs))
+    #print()
 
-    print("============ AStar Search ================")
+    print("============ Greedy Search ================")
     path_astar, explored_astar = astar_search(graph_neighbours, '0', '4')
     print("Path_astar:", path_astar)
     print("Explored Nodes A Star: ", explored_astar)
     print(len(explored_astar))
     print()
 
-    print("============ Bottleneck Astar Search ================")
-    path_1, explored_1 = astar_search(graph_neighbours, '0', '4')
-    path_2, explored_2 = astar_search(graph_neighbours, '0', '4')
-    print("Path1:", path_1)
-    print("Path_2:", path_2)
+    #print("============ Bottleneck Astar Search ================")
+    #path_1, explored_1 = astar_search(graph_neighbours, '0', '4')
+    #path_2, explored_2 = astar_search(graph_neighbours, '0', '4')
+    #print("Path1:", path_1)
+    #print("Path_2:", path_2)
 
-    print("Explored Nodes1: ", explored_1)
-    print("Explored Nodes2: ", explored_2)
-    print(len(explored_1) + len(explored_2))
+    #print("Explored Nodes1: ", explored_1)
+    #print("Explored Nodes2: ", explored_2)
+    #print(len(explored_1) + len(explored_2))
